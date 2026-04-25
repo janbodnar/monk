@@ -1,0 +1,61 @@
+monk - TODO / Feature Recommendations
+======================================
+
+High priority
+-------------
+[ ] -e / --exit-status
+      Exit non-zero when no elements are matched (like grep).
+      Enables reliable use in shell scripts: if monk -f page.html "h1"; then ...
+
+[x] -u / --url <url>
+      Fetch HTML directly from a URL instead of requiring: curl <url> | monk
+      Saves a very common pipe pattern.
+      DONE: implemented in parse.go; Content-Type header forwarded for charset detection.
+
+[ ] --outerhtml
+      Output matched nodes as serialized HTML strings instead of the custom
+      indented tree. Useful for piping output into another tool or saving
+      HTML fragments.
+
+[ ] --innerhtml
+      Like --outerhtml but outputs the contents only, without the matched
+      element's own opening/closing tag.
+
+[ ] -0 / --null
+      Separate output records with NUL (\0) instead of newline.
+      Safe for xargs -0 piping when values may contain newlines or spaces.
+      Most relevant with --attr and --text output modes.
+
+Medium priority
+---------------
+[ ] ~ sibling operator
+      General sibling combinator. Currently + selects the adjacent sibling;
+      ~ would select all following siblings — the natural counterpart.
+
+[ ] -q / --quiet
+      Suppress all output; only set exit status (implies --exit-status).
+      Pure existence check: monk -qf page.html "h1" && echo found
+
+[ ] --pretty
+      Re-serialize output as valid, indented HTML using golang.org/x/net/html
+      Render. Makes output reusable as HTML, not just human-readable.
+
+Low priority
+------------
+[ ] --each
+      Apply a second selector to each matched node independently and flatten
+      results. Different from chaining, which treats all matches as a pool.
+
+Implementation Status
+---------------------
+| Feature | Implemented | Notes |
+|---|---:|---|
+| `-e` / `--exit-status` | No | Not currently implemented; would set exit code when no matches |
+| `-u` / `--url <url>` | **Yes** | `parse.go`: HTTP GET, forwards `Content-Type` for charset detection |
+| `--outerhtml` | No | Partial: `-r/--raw` exists, but not exact serialized outer HTML |
+| `--innerhtml` | No | Not implemented |
+| `-0` / `--null` | No | Not implemented; useful for `xargs -0` workflows |
+| `~` general sibling operator | No | Selector handling supports `+` and `>` currently (`selector.go`) |
+| `-q` / `--quiet` | No | Not implemented; could imply `--exit-status` |
+| `--pretty` | No | Tree display exists but not full HTML re-serialization |
+| `--each` | No | Not implemented; would apply per-node selectors |
