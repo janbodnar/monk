@@ -1,0 +1,32 @@
+# Binaries
+/bin/
+/build/
+_output/
+
+# Test binary, coverage
+*.test
+coverage.out
+*.coverprofile
+
+# Vendor directory
+/vendor/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs and temp files
+*.log
+tmp/
+temp/
+
+# Go cache
+# (optional) ignore module cache if you keep it locally
+# $GOMODCACHE/
+
+# Misc
+dist/
+node_modules/
