@@ -28,7 +28,7 @@ monk [flags] [selectors]
 HTML is read from standard input unless `-f` or `-u` is given.
 
 ```
-curl -s https://example.com | monk h1
+xh https://example.com | monk h1
 monk -f page.html "ul li"
 monk -u https://example.com "a"
 ```
