@@ -23,8 +23,8 @@ Selectors are standard CSS selectors. Multiple selectors separated by spaces are
 | `-f <file>` | Read HTML from a file |
 | `-u <url>` | Fetch HTML from a URL |
 | `-c` | Print output with colour highlighting |
-| `-i <n\|str>` | Indent width in spaces, or a custom indent string |
-| `-n` | Print the number of matched elements |
+| `-i <n|str>` | Indent width in spaces, or a custom indent string |
+| `-n` / `--number` | Print the number of matched elements |
 | `-l <n>` | Restrict output depth to `n` levels |
 | `-p` | Do not escape HTML entities in output |
 | `-r` | Raw output (no newlines or indentation) |
@@ -41,7 +41,7 @@ Selectors are standard CSS selectors. Multiple selectors separated by spaces are
 |---------|-------------|
 | `monk -f page.html h1` | Print all `<h1>` elements from a local file |
 | `monk -u https://example.com p` | Fetch a page and print all `<p>` elements |
-| `cat page.html \| monk div p` | Pipe HTML and select `<p>` elements inside `<div>` elements |
+| `cat page.html | monk div p` | Pipe HTML and select `<p>` elements inside `<div>` elements |
 | `monk -f page.html ul > li` | Select direct `<li>` children of `<ul>` elements |
 | `monk -f page.html h2 + p` | Select `<p>` elements immediately following an `<h2>` |
 | `monk -f page.html h1, h2` | Select all `<h1>` and `<h2>` elements |
