@@ -102,6 +102,3 @@ plus several extensions:
 | `monk -f page.html -c ul li` | Print matched nodes with syntax highlighting |
 | `monk -f page.html -r p` | Raw output without extra newlines |
 
-## License
-
-MIT
