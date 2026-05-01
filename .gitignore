@@ -2,6 +2,7 @@
 /bin/
 /build/
 _output/
+monk
 
 # Test binary, coverage
 *.test
